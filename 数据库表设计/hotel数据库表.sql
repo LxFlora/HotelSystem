@@ -21,15 +21,18 @@ USE `hotel`;
 DROP TABLE IF EXISTS `admin`;
 
 CREATE TABLE `admin` (
-  `aId` int(10) NOT NULL AUTO_INCREMENT COMMENT '管理员ID',
+  `aId` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT '管理员ID',
+  `uoraId` int(10) NOT NULL COMMENT '使用者ID',
   `aName` varchar(10) DEFAULT NULL COMMENT '姓名',
   `aPwd` varchar(10) DEFAULT NULL COMMENT '密码',
-  PRIMARY KEY (`aId`)
+  PRIMARY KEY (`aId`),
+  KEY `FK_admin_uora` (`uoraId`),
+  CONSTRAINT `FK_admin_uora` FOREIGN KEY (`uoraId`) REFERENCES `uora` (`uoraId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `admin` */
 
-insert  into `admin`(`aId`,`aName`,`aPwd`) values (1,'李进','123456');
+insert  into `admin`(`aId`,`uoraId`,`aName`,`aPwd`) values (0000000001,1,'李进','123456');
 
 /*Table structure for table `comm` */
 
@@ -129,12 +132,27 @@ CREATE TABLE `rtype` (
 
 insert  into `rtype`(`rtypeId`,`rtypeName`,`liveNum`,`facility`,`resMoney`,`isRes`,`isNet`,`isFoot`,`imgUrl`,`remark`) values (1,'总统套房',3,'电视、冰箱、空调',1500,0,0,0,NULL,NULL),(2,'特大豪华房',3,'电视、冰箱、空调',1200,0,0,0,NULL,NULL),(3,'豪华房',2,'电视、冰箱、空调',900,0,0,0,NULL,NULL),(4,'商务房',2,'电视、小冰箱、空调',500,0,0,0,NULL,NULL),(5,'情侣房',2,'电视、冰箱、空调',999,0,0,0,NULL,NULL),(6,'钟点房',2,'空调',300,0,0,0,NULL,NULL);
 
+/*Table structure for table `uora` */
+
+DROP TABLE IF EXISTS `uora`;
+
+CREATE TABLE `uora` (
+  `uoraId` int(10) NOT NULL AUTO_INCREMENT COMMENT '使用者ID',
+  `uoraType` varchar(20) NOT NULL COMMENT '使用者类型',
+  PRIMARY KEY (`uoraId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `uora` */
+
+insert  into `uora`(`uoraId`,`uoraType`) values (1,'管理员'),(2,'客户');
+
 /*Table structure for table `user` */
 
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `uid` int(10) NOT NULL AUTO_INCREMENT COMMENT '客户ID',
+  `uoraId` int(10) NOT NULL COMMENT '使用者ID',
   `uNum` varchar(20) NOT NULL COMMENT '客户账号',
   `uName` varchar(20) NOT NULL COMMENT '客户姓名',
   `uPhone` varchar(13) NOT NULL COMMENT '手机',
@@ -143,12 +161,14 @@ CREATE TABLE `user` (
   `IDCard` varchar(18) NOT NULL COMMENT '身份证号',
   `uEmail` varchar(50) NOT NULL COMMENT '邮箱',
   `regisdate` datetime NOT NULL COMMENT '注册时间',
-  PRIMARY KEY (`uid`)
+  PRIMARY KEY (`uid`),
+  KEY `FK_user_uora` (`uoraId`),
+  CONSTRAINT `FK_user_uora` FOREIGN KEY (`uoraId`) REFERENCES `uora` (`uoraId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`uid`,`uNum`,`uName`,`uPhone`,`uPwd`,`uSex`,`IDCard`,`uEmail`,`regisdate`) values (1,'1000021','金汉斯','18976649547','123456','男','495860385839592458','123@qq.com','2017-05-06 00:00:00'),(2,'1000022','董小姐','27583658346','dxj123','女','475869699595940440','dxj@ddd.com','2017-06-21 00:00:00'),(3,'1000023','福南','36586938692','0987','男','375869237582143586','funan@na.com','2017-07-15 00:00:00'),(4,'1000024','京东方','74839399327','4637','女','573833931034880249','234@qq.com','2017-09-28 00:00:00'),(5,'1000025','Tom','36586475892','0987355','男','375869257482143586','Tom@na.com','2017-10-15 00:00:00'),(6,'1000026','LiLY','58688938695','lily','女','274869237582143586','Lily@na.com','2017-12-15 00:00:00');
+insert  into `user`(`uid`,`uoraId`,`uNum`,`uName`,`uPhone`,`uPwd`,`uSex`,`IDCard`,`uEmail`,`regisdate`) values (1,2,'1000021','金汉斯','18976649547','123456','男','495860385839592458','123@qq.com','2017-05-06 00:00:00'),(2,2,'1000022','董小姐','27583658346','dxj123','女','475869699595940440','dxj@ddd.com','2017-06-21 00:00:00'),(3,2,'1000023','福南','36586938692','0987','男','375869237582143586','funan@na.com','2017-07-15 00:00:00'),(4,2,'1000024','京东方','74839399327','4637','女','573833931034880249','234@qq.com','2017-09-28 00:00:00'),(5,2,'1000025','Tom','36586475892','0987355','男','375869257482143586','Tom@na.com','2017-10-15 00:00:00'),(6,2,'1000026','LiLY','58688938695','lily','女','274869237582143586','Lily@na.com','2017-12-15 00:00:00');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
