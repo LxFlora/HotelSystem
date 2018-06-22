@@ -6,7 +6,7 @@ package com.slsd.entity;
  */
 public class Room {
     private int roomId;//客房ID
-    private Rtype rtype;//客房类型
+    private int rtypeId;//客房类型
     private int price;//价格
     private int liveNum;//居住人数
     private String facility;//基础设施
@@ -33,17 +33,18 @@ public class Room {
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
 	}
+
 	/**
-	 * @return the rtype
+	 * @return the rtypeId
 	 */
-	public Rtype getRtype() {
-		return rtype;
+	public int getRtypeId() {
+		return rtypeId;
 	}
 	/**
-	 * @param rtype the rtype to set
+	 * @param rtypeId the rtypeId to set
 	 */
-	public void setRtype(Rtype rtype) {
-		this.rtype = rtype;
+	public void setRtypeId(int rtypeId) {
+		this.rtypeId = rtypeId;
 	}
 	/**
 	 * @return the price
@@ -215,12 +216,51 @@ public class Room {
 	public void setOrders(Orders orders) {
 		this.orders = orders;
 	}
+	
+	public Room() {
+		super();
+	}
+	public Room(int roomId, int rtypeId, int price, int liveNum, String facility, int resMoney, int isRes, int isNet,
+			int isFoot, String defImg, String rSize, String bed, String state, String remark) {
+		super();
+		this.roomId = roomId;
+		this.rtypeId = rtypeId;
+		this.price = price;
+		this.liveNum = liveNum;
+		this.facility = facility;
+		this.resMoney = resMoney;
+		this.isRes = isRes;
+		this.isNet = isNet;
+		this.isFoot = isFoot;
+		this.defImg = defImg;
+		this.rSize = rSize;
+		this.bed = bed;
+		this.state = state;
+		this.remark = remark;
+	}
+	public Room(int rtypeId, int price, int liveNum, String facility, int resMoney, int isRes, int isNet, int isFoot,
+			String defImg, String rSize, String bed, String state, String remark) {
+		super();
+		this.rtypeId = rtypeId;
+		this.price = price;
+		this.liveNum = liveNum;
+		this.facility = facility;
+		this.resMoney = resMoney;
+		this.isRes = isRes;
+		this.isNet = isNet;
+		this.isFoot = isFoot;
+		this.defImg = defImg;
+		this.rSize = rSize;
+		this.bed = bed;
+		this.state = state;
+		this.remark = remark;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Room [roomId=" + roomId + ", rtype=" + rtype + ", price=" + price + ", liveNum=" + liveNum
+		return "Room [roomId=" + roomId + ", rtypeId=" + rtypeId + ", price=" + price + ", liveNum=" + liveNum
 				+ ", facility=" + facility + ", resMoney=" + resMoney + ", isRes=" + isRes + ", isNet=" + isNet
 				+ ", isFoot=" + isFoot + ", defImg=" + defImg + ", rSize=" + rSize + ", bed=" + bed + ", state=" + state
 				+ ", remark=" + remark + "]";

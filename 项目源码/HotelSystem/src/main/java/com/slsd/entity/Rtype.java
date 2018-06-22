@@ -152,6 +152,43 @@ public class Rtype {
 	public void setRooms(Set<Room> rooms) {
 		this.rooms = rooms;
 	}
+	
+	public Rtype() {
+		super();
+	}
+	
+	public Rtype(String rtypeName, int liveNum, String facility, int resMoney, int isRes, int isNet, int isFoot,
+			String imgUrl, String remark) {
+		super();
+		this.rtypeName = rtypeName;
+		this.liveNum = liveNum;
+		this.facility = facility;
+		this.resMoney = resMoney;
+		this.isRes = isRes;
+		this.isNet = isNet;
+		this.isFoot = isFoot;
+		this.imgUrl = imgUrl;
+		this.remark = remark;
+	
+	}
+	public Rtype(int rtypeId, String rtypeName, int liveNum, String facility, int resMoney, int isRes, int isNet,
+			int isFoot, String imgUrl, String remark) {
+		super();
+		this.rtypeId = rtypeId;
+		this.rtypeName = rtypeName;
+		this.liveNum = liveNum;
+		this.facility = facility;
+		this.resMoney = resMoney;
+		this.isRes = isRes;
+		this.isNet = isNet;
+		this.isFoot = isFoot;
+		this.imgUrl = imgUrl;
+		this.remark = remark;
+	}
+	public Rtype(int rtypeId) {
+		super();
+		this.rtypeId = rtypeId;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
