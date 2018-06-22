@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值设置成包名+DAO接口名，这样就能够保证namespace的值是唯一的并能够匹配DAO接口 
+	例如namespace="com.slsd.dao.RoomDao"就是com.slsd.dao(包名)+RoomDao(接口名) -->
+<mapper namespace="com.slsd.dao.RtypeDao">
+	
+	<!-- 根据id查询得到一个Rtype对象 -->
+	<select id="getAllRtype" resultType="Rtype">
+		select * from rtype
+	</select>
+
+	<select id="getRtypeById" parameterType="int" resultType="Rtype">
+		select * from Rtype where rtypeId=#{id}
+	</select>
+	<!-- mysql、sqlserver等数据库本身带有主键自增长像auto_increment的功能可以直接使用 useGeneratedKeys="true"来实现 -->
+	<!-- 而oracle则不行，oracle主键自增长是通过sequence实现的 -->
+	<insert id="addRtype" useGeneratedKeys="true" keyProperty="rtypeId" parameterType="Rtype">
+		insert into Rtype (rtypeId,rtypeName,liveNum,facility,resMoney,isRes,isNet,isFoot,imgUrl,remark)
+		values(rtypeId,#{rtypeName},#{liveNum},#{facility},#{resMoney},#{isRes},#{isNet},#{isFoot},#{imgUrl},#{remark})
+	</insert>
+	<update id="editRtype" parameterType="Rtype">
+		update Rtype set
+		rtypeName=#{rtypeName},liveNum=#{liveNum},facility=#{facility},resMoney=#{resMoney},isRes=#{isRes},isNet=#{isNet},isFoot=#{isFoot},imgUrl=#{imgUrl},remark=#{remark} 
+		where rtypeId=#{rtypeId}
+	</update>
+	<delete id="delRtype" parameterType="int">
+		delete from Rtype where
+		rtypeId=#{id}
+	</delete>
+</mapper>

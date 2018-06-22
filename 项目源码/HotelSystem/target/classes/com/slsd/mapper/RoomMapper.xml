@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值设置成包名+DAO接口名，这样就能够保证namespace的值是唯一的并能够匹配DAO接口 
+	例如namespace="com.slsd.dao.RoomDao"就是com.slsd.dao(包名)+RoomDao(接口名) -->
+<mapper namespace="com.slsd.dao.RoomDao">
+	
+	<!-- 根据id查询得到一个user对象 -->
+	<select id="getAllRoom" resultType="Room">
+		select * from room
+	</select>
+
+	<select id="getRoomById" parameterType="int" resultType="Room">
+		select * from room where roomId=#{id}
+	</select>
+	<!-- mysql、sqlserver等数据库本身带有主键自增长像auto_increment的功能可以直接使用 useGeneratedKeys="true"来实现 -->
+	<!-- 而oracle则不行，oracle主键自增长是通过sequence实现的 -->
+	<insert id="addRoom" useGeneratedKeys="true" keyProperty="roomId" parameterType="Room">
+		insert into room (roomId,rtypeId,price,liveNum,facility,resMoney,isRes,isNet,isFoot,defImg,rSize,bed,state,remark)
+		values(roomId,#{rtypeId},#{price},#{liveNum},#{facility},#{resMoney},#{isRes},#{isNet},#{isFoot},#{defImg},#{rSize},#{bed},#{state},#{remark})
+	</insert>
+	<update id="editRoom" parameterType="Room">
+		update room set
+		rtypeId=#{rtypeId},price=#{price},liveNum=#{liveNum},facility=#{facility},resMoney=#{resMoney},isRes=#{isRes},isNet=#{isNet},isFoot=#{isFoot},defImg=#{defImg},rSize=#{rSize},bed=#{bed},state=#{state},remark=#{remark} 
+		where roomId=#{id}
+	</update>
+	<delete id="delRoom" parameterType="int">
+		delete from room where
+		roomId=#{id}
+	</delete>
+	<select id="page" parameterType="int" resultType="Room">
+	  select * from room 
+	</select>
+	<select id="count" parameterType="int">
+	select count(roomId) from room 
+	</select>
+</mapper>

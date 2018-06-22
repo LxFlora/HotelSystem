@@ -6,8 +6,23 @@ package com.slsd.entity;
  */
 public class Admin {
 	private int aId;//管理员ID
+	private int uoraId;
 	private String aName;//姓名
 	private String aPwd;//密码
+	
+
+	/**
+	 * @return the uoraId
+	 */
+	public int getUoraId() {
+		return uoraId;
+	}
+	/**
+	 * @param uoraId the uoraId to set
+	 */
+	public void setUoraId(int uoraId) {
+		this.uoraId = 1;
+	}
 	/**
 	 * @return the aId
 	 */
@@ -44,13 +59,36 @@ public class Admin {
 	public void setaPwd(String aPwd) {
 		this.aPwd = aPwd;
 	}
+	
+	public Admin() {
+		super();
+	}
+	
+	public Admin(int uoraId, String aName, String aPwd) {
+		super();
+		this.uoraId =1;
+		this.aName = aName;
+		this.aPwd = aPwd;
+	}
+	
+	public Admin(int aId, int uoraId, String aName, String aPwd) {
+		super();
+		this.aId = aId;
+		this.uoraId = uoraId;
+		this.aName = aName;
+		this.aPwd = aPwd;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Admin [aId=" + aId + ", aName=" + aName + ", aPwd=" + aPwd + "]";
+		return "Admin [aId=" + aId + ", uoraId=" + uoraId + ", aName=" + aName + ", aPwd=" + aPwd + "]";
 	}
+
+	
+
+
 	
 	
 }

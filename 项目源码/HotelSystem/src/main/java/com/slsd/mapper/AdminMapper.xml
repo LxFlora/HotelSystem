@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值设置成包名+DAO接口名，这样就能够保证namespace的值是唯一的并能够匹配DAO接口 
+	例如namespace="com.slsd.dao.RoomDao"就是com.slsd.dao(包名)+RoomDao(接口名) -->
+<mapper namespace="com.slsd.dao.AdminDao">
+	
+	<!-- 根据id查询得到一个Rtype对象 -->
+	<select id="getAllAdmin" resultType="Admin">
+		select * from Admin
+	</select>
+	<!-- mysql、sqlserver等数据库本身带有主键自增长像auto_increment的功能可以直接使用 useGeneratedKeys="true"来实现 -->
+	<!-- 而oracle则不行，oracle主键自增长是通过sequence实现的 -->
+	<insert id="addAdmin" useGeneratedKeys="true" keyProperty="aId" parameterType="Admin">
+		insert into Admin (aId, uoraId,aName,aPwd)
+		values(aId,#{uoraId},#{aName},#{aPwd})
+	</insert>
+	<update id="editAdmin" parameterType="Admin">
+		update Admin set
+		uoraId=#{uoraId},aName=#{aName},aPwd=#{aPwd}
+		where aId=#{aId}
+	</update>
+	<delete id="delAdmin" parameterType="int">
+		delete from Admin where
+		aId=#{id}
+	</delete>
+</mapper>

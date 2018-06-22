@@ -8,7 +8,8 @@ package com.slsd.entity;
 import java.util.Date;
 
 public class User {
-    private int uid;//客户id
+    private int uId;//客户id
+    private int uoraId;
     private String uNum;//客户账号
     private String uName;//客户姓名
     private String uPhone;//手机
@@ -19,6 +20,19 @@ public class User {
     private Date regisdate;//注册时间
     private Comm comm;//评论
     private Orders orders;//订单
+    
+	/**
+	 * @return the uoraId
+	 */
+	public int getUoraId() {
+		return uoraId;
+	}
+	/**
+	 * @param uoraId the uoraId to set
+	 */
+	public void setUoraId(int uoraId) {
+		this.uoraId = uoraId;
+	}
 	/**
 	 * @return the orders
 	 */
@@ -34,14 +48,14 @@ public class User {
 	/**
 	 * @return the uid
 	 */
-	public int getUid() {
-		return uid;
+	public int getUId() {
+		return uId;
 	}
 	/**
 	 * @param uid the uid to set
 	 */
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setUId(int uid) {
+		this.uId = uid;
 	}
 	/**
 	 * @return the uNum
@@ -153,14 +167,48 @@ public class User {
 	public void setComm(Comm comm) {
 		this.comm = comm;
 	}
+	
+	public User() {
+		super();
+	}
+	
+	public User(int uoraId, String uNum, String uName, String uPhone, String uPwd, String uSex, String iDCard,
+			String uEmail, Date regisdate) {
+		super();
+		this.uoraId = uoraId;
+		this.uNum = uNum;
+		this.uName = uName;
+		this.uPhone = uPhone;
+		this.uPwd = uPwd;
+		this.uSex = uSex;
+		IDCard = iDCard;
+		this.uEmail = uEmail;
+		this.regisdate = regisdate;
+	}
+	public User(int uId, int uoraId, String uNum, String uName, String uPhone, String uPwd, String uSex, String iDCard,
+			String uEmail, Date regisdate) {
+		super();
+		this.uId = uId;
+		this.uoraId = uoraId;
+		this.uNum = uNum;
+		this.uName = uName;
+		this.uPhone = uPhone;
+		this.uPwd = uPwd;
+		this.uSex = uSex;
+		IDCard = iDCard;
+		this.uEmail = uEmail;
+		this.regisdate = regisdate;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", uNum=" + uNum + ", uName=" + uName + ", uPhone=" + uPhone + ", uPwd=" + uPwd
-				+ ", uSex=" + uSex + ", IDCard=" + IDCard + ", uEmail=" + uEmail + ", regisdate=" + regisdate + "]";
+		return "User [uId=" + uId + ", uoraId=" + uoraId + ", uNum=" + uNum + ", uName=" + uName + ", uPhone=" + uPhone
+				+ ", uPwd=" + uPwd + ", uSex=" + uSex + ", IDCard=" + IDCard + ", uEmail=" + uEmail + ", regisdate="
+				+ regisdate + "]";
 	}
+	
     
     
     
