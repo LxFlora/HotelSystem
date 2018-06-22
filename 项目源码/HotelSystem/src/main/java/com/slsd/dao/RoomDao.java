@@ -36,7 +36,7 @@ public interface RoomDao {
      * @param room
      * @return
      */
-    public int delRoom(Room room);
+    public int delRoom(int roomId);
     /**
      * 页面查询
      * @param pageStart 开始页

@@ -24,21 +24,21 @@ public interface RoomService {
     /**
      * 添加客房
      * @param room
-     * @return int
+     * @return boolean
      */
-    public int addRoom(Room room);
+    public boolean addRoom(Room room);
     /**
      * 编辑客房信息
      * @param room
-     * @return int
+     * @return boolean
      */
-    public int editRoom(Room room);
+    public boolean editRoom(Room room);
     /**
      * 删除客房信息
      * @param room
-     * @return
+     * @return boolean
      */
-    public int delRoom(Room room);
+    public boolean delRoom(int roomId);
     /**
      * 页面查询
      * @param pageStart 开始页
