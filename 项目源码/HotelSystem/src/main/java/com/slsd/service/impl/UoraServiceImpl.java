@@ -12,9 +12,9 @@ import com.slsd.service.UoraService;
 @Service("uoraService")//通常作用在业务层
 public class UoraServiceImpl implements UoraService {
 	@Resource
-	private UoraDao uoraDao;
+	private UoraDao uoraDaoImpl;
 	public List<Uora> getAllUora() {
-		List<Uora> ulist=uoraDao.getAllUora();
+		List<Uora> ulist=uoraDaoImpl.getAllUora();
 		return ulist;
 	}
 

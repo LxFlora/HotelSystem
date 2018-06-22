@@ -12,22 +12,22 @@ import com.slsd.service.UserService;
 @Service("userService")//通常作用在业务层
 public class UserServiceImpl implements UserService {
 	@Resource
-	private UserDao userDao;
+	private UserDao userDaoImpl;
 	public List<User> getAllUser() {
-		List<User> ulist=userDao.getAllUser();
+		List<User> ulist=userDaoImpl.getAllUser();
 		return ulist;
 	}
 
 	public boolean addUser(User user) {
-		return userDao.addUser(user)>0?true:false;
+		return userDaoImpl.addUser(user)>0?true:false;
 	}
 
 	public boolean editUser(User user) {
-		return userDao.editUser(user)>0?true:false;
+		return userDaoImpl.editUser(user)>0?true:false;
 	}
 
 	public boolean delUser(int uid) {
-		return userDao.delUser(uid)>0?true:false;
+		return userDaoImpl.delUser(uid)>0?true:false;
 	}
 
 }

@@ -12,32 +12,32 @@ import com.slsd.service.RoomService;
 @Service("roomService")//通常作用在业务层
 public class RoomServiceImpl implements RoomService {
 	@Resource
-	private RoomDao roomDao;
+	private RoomDao roomDaoImpl;
 	
 	public List<Room> getAllRoom() {
-		List<Room> rlist=roomDao.getAllRoom();
+		List<Room> rlist=roomDaoImpl.getAllRoom();
 		return rlist;
 	}
 
 	public Room getRoomById(int roomId) {
-		Room room=roomDao.getRoomById(roomId);
+		Room room=roomDaoImpl.getRoomById(roomId);
 		return room;
 	}
 
 	public boolean addRoom(Room room) {
-		int row=roomDao.addRoom(room);
+		int row=roomDaoImpl.addRoom(room);
 		return row>0?true:false;
 	}
 
 	public boolean editRoom(Room room) {
-		int row=roomDao.editRoom(room);
+		int row=roomDaoImpl.editRoom(room);
 		return row>0?true:false;
 		
 	}
 
 	public boolean delRoom(int roomId) {
-		// TODO Auto-generated method stub
-		return false;
+		int row=roomDaoImpl.delRoom(roomId);
+		return row>0?true:false;
 	}
 
 	public List<Room> page(int pageStart, int pageSize) {

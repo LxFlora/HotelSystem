@@ -12,29 +12,29 @@ import com.slsd.service.RtypeService;
 @Service("rtypeService")//通常作用在业务层
 public class RtypeServiceImpl implements RtypeService {
 	@Resource
-	private RtypeDao rtypeDao;
+	private RtypeDao rtypeDaoImpl;
 	public List<Rtype> getAllRtype() {
-		List<Rtype> rtype=rtypeDao.getAllRtype();
+		List<Rtype> rtype=rtypeDaoImpl.getAllRtype();
 		return rtype;
 	}
 
 	public Rtype getRtypeById(int rtypeId) {
-		Rtype rtype=rtypeDao.getRtypeById(rtypeId);
+		Rtype rtype=rtypeDaoImpl.getRtypeById(rtypeId);
 		return rtype;
 	}
 
 	public boolean addRtype(Rtype rtype) {
-		int row=rtypeDao.addRtype(rtype);
+		int row=rtypeDaoImpl.addRtype(rtype);
 		return row>0?true:false;
 	}
 
 	public boolean editRtype(Rtype rtype) {
-		int row=rtypeDao.editRtype(rtype);
+		int row=rtypeDaoImpl.editRtype(rtype);
 		return row>0?true:false;
 	}
 
 	public boolean delRtype(int rtypeId) {
-		int row=rtypeDao.delRtype(rtypeId);
+		int row=rtypeDaoImpl.delRtype(rtypeId);
 		return row>0?true:false;
 	}
 
